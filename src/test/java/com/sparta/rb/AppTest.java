@@ -43,4 +43,16 @@ public class AppTest
     public void check2019ReturnsMMXIX() {
         Assertions.assertEquals("MMXIX", App.convertToRomanNumerals(2019));
     }
+
+    @Test
+    @DisplayName("Check 3000 returns MMM")
+    public void check3000ReturnsMMM() {
+        Assertions.assertEquals("MMM", App.convertToRomanNumerals(3000));
+    }
+
+    @Test
+    @DisplayName("Check 10000 returns MMMMMMMMMM")
+    public void check10000ReturnsMMMMMMMMMM() {
+        Assertions.assertEquals("MMMMMMMMMM", App.convertToRomanNumerals(10000));
+    }
 }
