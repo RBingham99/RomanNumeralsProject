@@ -1,8 +1,5 @@
 package com.sparta.rb;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class App
 {
     public static void main( String[] args )
@@ -16,12 +13,20 @@ public class App
         int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
         StringBuilder answerString = new StringBuilder();
 
+        //Add some validation (num between 1 and 3999)
+        //Add exception try catch
+
         for (int i = 0; i <= values.length - 1; i++) {
-            while (numToConvert >= values[i]) {
-                answerString.append(numerals[i]);
-                numToConvert = numToConvert - values[i];
-            }
+            numToConvert = getNumeralString(numToConvert, values, i, answerString, numerals);
         }
         return answerString.toString();
+    }
+
+    private static int getNumeralString(int numToConvert, int[] values, int i, StringBuilder answerString, String[] numerals) {
+        while (numToConvert >= values[i]) {
+            answerString.append(numerals[i]);
+            numToConvert = numToConvert - values[i];
+        }
+        return numToConvert;
     }
 }
