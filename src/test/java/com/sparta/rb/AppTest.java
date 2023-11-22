@@ -10,49 +10,54 @@ public class AppTest
 {
     @Test
     @DisplayName("Check 4 returns IV")
-    public void check4ReturnsIV() {
+    public void check4ReturnsIV() throws InvalidValueException {
         Assertions.assertEquals("IV", App.convertToRomanNumerals(4));
     }
 
     @Test
     @DisplayName("Check 9 returns IX")
-    public void check9ReturnsIX() {
+    public void check9ReturnsIX() throws InvalidValueException {
         Assertions.assertEquals("IX", App.convertToRomanNumerals(9));
     }
 
     @Test
     @DisplayName("Check 29 returns XXIX")
-    public void check29ReturnsXXIX() {
+    public void check29ReturnsXXIX() throws InvalidValueException {
         Assertions.assertEquals("XXIX", App.convertToRomanNumerals(29));
     }
 
     @Test
     @DisplayName("Check 80 returns LXXX")
-    public void check80ReturnsLXXX() {
+    public void check80ReturnsLXXX() throws InvalidValueException {
         Assertions.assertEquals("LXXX", App.convertToRomanNumerals(80));
     }
 
     @Test
     @DisplayName("Check 294 returns CCXCIV")
-    public void check294ReturnsCCXCIV() {
+    public void check294ReturnsCCXCIV() throws InvalidValueException {
         Assertions.assertEquals("CCXCIV", App.convertToRomanNumerals(294));
     }
 
     @Test
     @DisplayName("Check 2019 returns MMXIX")
-    public void check2019ReturnsMMXIX() {
+    public void check2019ReturnsMMXIX() throws InvalidValueException {
         Assertions.assertEquals("MMXIX", App.convertToRomanNumerals(2019));
     }
 
     @Test
-    @DisplayName("Check 3000 returns MMM")
-    public void check3000ReturnsMMM() {
-        Assertions.assertEquals("MMM", App.convertToRomanNumerals(3000));
-    }
+    @DisplayName("Check 4000 throws InvalidValueException")
+    public void check4000ThrowsInvalidValueException() throws InvalidValueException {
+        Exception thrown = Assertions.assertThrows(InvalidValueException.class, () -> {
+            App.convertToRomanNumerals(4000);
+        });
 
-    @Test
-    @DisplayName("Check 10000 returns MMMMMMMMMM")
-    public void check10000ReturnsMMMMMMMMMM() {
-        Assertions.assertEquals("MMMMMMMMMM", App.convertToRomanNumerals(10000));
+        Assertions.assertEquals("Entered value must be above 0 and under 4000", thrown.getMessage());
     }
+    
+//
+//    @Test
+//    @DisplayName("Check 10000 returns MMMMMMMMMM")
+//    public void check10000ReturnsMMMMMMMMMM() {
+//        Assertions.assertEquals("MMMMMMMMMM", App.convertToRomanNumerals(10000));
+
 }

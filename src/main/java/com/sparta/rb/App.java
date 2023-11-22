@@ -4,22 +4,26 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println(convertToRomanNumerals(24));
+        try {
+            System.out.println(convertToRomanNumerals(5000));
+        } catch (InvalidValueException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    public static String convertToRomanNumerals(int numToConvert)
-    {
+    public static String convertToRomanNumerals(int numToConvert) throws InvalidValueException {
         String[] numerals = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
         int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
         StringBuilder answerString = new StringBuilder();
 
-        //Add some validation (num between 1 and 3999)
-        //Add exception try catch
-
-        for (int i = 0; i <= values.length - 1; i++) {
-            numToConvert = getNumeralString(numToConvert, values, i, answerString, numerals);
+        if (numToConvert < 4000 && numToConvert > 0) {
+            for (int i = 0; i <= values.length - 1; i++) {
+                numToConvert = getNumeralString(numToConvert, values, i, answerString, numerals);
+            }
+            return answerString.toString();
+        } else {
+            throw new InvalidValueException();
         }
-        return answerString.toString();
     }
 
     private static int getNumeralString(int numToConvert, int[] values, int i, StringBuilder answerString, String[] numerals) {
