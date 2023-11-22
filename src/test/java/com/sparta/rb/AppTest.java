@@ -46,18 +46,12 @@ public class AppTest
 
     @Test
     @DisplayName("Check 4000 throws InvalidValueException")
-    public void check4000ThrowsInvalidValueException() throws InvalidValueException {
+    public void check4000ThrowsInvalidValueException() {
         Exception thrown = Assertions.assertThrows(InvalidValueException.class, () -> {
             App.convertToRomanNumerals(4000);
         });
 
         Assertions.assertEquals("Entered value must be above 0 and under 4000", thrown.getMessage());
     }
-    
-//
-//    @Test
-//    @DisplayName("Check 10000 returns MMMMMMMMMM")
-//    public void check10000ReturnsMMMMMMMMMM() {
-//        Assertions.assertEquals("MMMMMMMMMM", App.convertToRomanNumerals(10000));
 
 }
